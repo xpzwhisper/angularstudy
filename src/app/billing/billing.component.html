@@ -1,0 +1,36 @@
+<form>
+  Date is formated via pipe: {{billingdata.date | date :'long' }}
+  <br>
+  Date is not formated: {{billingdata.date  }}
+  <br>
+  Name:{{billingdata.name}}
+  <input
+    [ngModelOptions]="{standalone: true}"
+    [(ngModel)]="billingdata.name"
+    type="text">
+  <br>
+  Phone:{{billingdata.phone}}
+  <input
+    [ngModelOptions]="{standalone: true}"
+    [(ngModel)]="billingdata.phone"
+    type="number">
+  <br>
+  address:{{billingdata.address}}
+  <input
+    [ngModelOptions]="{standalone: true}"
+    [(ngModel)]="billingdata.address"
+    type="text">
+  <br>
+  date:
+  <input
+    [ngModelOptions]="{standalone: true}"
+    [(ngModel)]="billingdata.date"
+    type="date">
+  <br>
+</form>
+<button
+  (click)="buttonclick()"
+  value="Submit">
+  Submit Information
+</button>
+<h1 *ngIf="haveResponse">{{apiRespose.title}}</h1>

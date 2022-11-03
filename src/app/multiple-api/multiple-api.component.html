@@ -1,0 +1,17 @@
+<p *ngIf="!selectedProduct">name:</p>
+<p *ngIf="selectedProduct">{{selectedProduct.brand}}</p>
+<input
+  type="text"
+  class="form-control"
+  (ngModelChange)="inputChange($event)"
+  [(ngModel)]="filteredString">
+
+<ng-container *ngFor="let item of product">
+  <ng-container>
+    <li (click)="selectedProduct=item">id = {{item.id}}, {{item.brand}}, price = {{item.price}}, stock = {{item.stock}}, total = {{item.stock +item.price}}
+    </li>
+  </ng-container>
+
+</ng-container>
+
+<!-- https://dummyjson.com/products -->
