@@ -1,12 +1,20 @@
 <p *ngIf="!selectedProduct">name:</p>
 <p *ngIf="selectedProduct">{{selectedProduct.brand}}</p>
+brand:
 <input
   type="text"
   class="form-control"
-  (ngModelChange)="inputChange($event)"
-  [(ngModel)]="filteredString">
-
-<ng-container *ngFor="let item of product">
+  [(ngModel)]="filteredString"
+  (ngModelChange)="inputChangeBrand($event)">
+<br>
+price:
+<input
+  type="number"
+  class="form-control"
+  [(ngModel)]="filteredPrice"
+  (ngModelChange)="inputChangePrice($event)">
+<br>
+<ng-container *ngFor="let item of productsHtml">
   <ng-container>
     <li (click)="selectedProduct=item">id = {{item.id}}, {{item.brand}}, price = {{item.price}}, stock = {{item.stock}}, total = {{item.stock +item.price}}
     </li>
