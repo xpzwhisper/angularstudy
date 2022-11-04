@@ -5,21 +5,47 @@ brand:
   type="text"
   class="form-control"
   [(ngModel)]="filteredString"
-  (ngModelChange)="inputChangeBrand($event)">
+  (ngModelChange)="inputChangeBrand()">
 <br>
 price:
 <input
   type="number"
   class="form-control"
   [(ngModel)]="filteredPrice"
-  (ngModelChange)="inputChangePrice($event)">
+  (ngModelChange)="inputChangePrice()">
 <br>
-<ng-container *ngFor="let item of productsHtml">
-  <ng-container>
-    <li (click)="selectedProduct=item">id = {{item.id}}, {{item.brand}}, price = {{item.price}}, stock = {{item.stock}}, total = {{item.stock +item.price}}
-    </li>
-  </ng-container>
+Sort by price
+<input
+  type="checkbox"
+  class="form-control"
+  [(ngModel)]="priceSort"
+  (ngModelChange)="inputChangePriceSort()">
 
-</ng-container>
+<br>
+<table>
+  <tbody>
+    <tr>
 
+      <th>brand</th>
+      <th>price</th>
+      <th>stock</th>
+
+    </tr>
+    <ng-container *ngFor="let item of productsHtml">
+      <ng-container>
+        <tr (click)="selectedProduct=item">
+
+          <td>{{item.brand}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.stock}}</td>
+        </tr>
+
+        <!-- <li (click)="selectedProduct=item">id = {{item.id}}, {{item.brand}}, price = {{item.price}}, stock = {{item.stock}}, total = {{item.stock +item.price}} -->
+        <!-- </li> -->
+      </ng-container>
+
+    </ng-container>
+
+  </tbody>
+</table>
 <!-- https://dummyjson.com/products -->

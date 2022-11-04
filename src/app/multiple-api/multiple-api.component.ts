@@ -9,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class MultipleAPIComponent implements OnInit {
   constructor(public http: HttpClient) {}
   productsHtml: any;
+  realList: any;
   selectedProduct: any;
   filteredString: any = '';
   filteredPrice: any;
-  realList: any;
+  priceSort: any;
+
   ngOnInit(): void {
     this.http.get('https://dummyjson.com/products').subscribe((data: any) => {
       //console.log(data.products);
@@ -20,48 +22,72 @@ export class MultipleAPIComponent implements OnInit {
       this.realList = data.products;
     });
   }
-  inputChangeBrand(event: any) {
-    console.log(event, this.filteredString);
-    let x = event.toLowerCase();
+
+  inputChangeBrand() {
     let products = [];
-    if (typeof this.filteredPrice === 'undefined') {
-      console.log('yes');
-      for (const product of this.realList) {
-        let brand = product.brand;
-        brand = brand.toLowerCase();
-        if (brand.includes(x)) {
-          products.push(product);
-        }
-      }
-    } else {
-      for (const product of this.productsHtml) {
-        let brand = product.brand;
-        brand = brand.toLowerCase();
-        if (brand.includes(x)) {
-          products.push(product);
-        }
+    let x = this.filteredString.toLowerCase();
+    for (const product of this.realList) {
+      let brand = product.brand;
+      brand = brand.toLowerCase();
+      if (brand.includes(x)) {
+        products.push(product);
       }
     }
-    //results
     this.productsHtml = products;
+    this.loopOverPriceFilter();
+    this.inputChangePriceSort();
   }
-  inputChangePrice(event: any) {
+
+  inputChangePrice() {
     let products = [];
-    if (this.filteredString === '') {
-      console.log(event);
-      for (const product of this.realList) {
-        if (event <= product.price) {
-          products.push(product);
-        }
-      }
-    } else {
-      for (const product of this.productsHtml) {
-        if (event <= product.price) {
-          products.push(product);
-        }
+    for (const product of this.realList) {
+      if (this.filteredPrice <= product.price) {
+        products.push(product);
       }
     }
-    //results
     this.productsHtml = products;
+    this.loopOverBrandFilter();
+    this.inputChangePriceSort();
+  }
+
+  loopOverPriceFilter() {
+    let products = [];
+    if (typeof this.filteredPrice !== 'undefined') {
+      for (const product of this.productsHtml) {
+        if (this.filteredPrice <= product.price) {
+          products.push(product);
+        }
+      }
+      this.productsHtml = products;
+    }
+  }
+
+  loopOverBrandFilter() {
+    let products = [];
+    let x = this.filteredString.toLowerCase();
+    if (typeof this.filteredPrice !== 'undefined') {
+      for (const product of this.productsHtml) {
+        let brand = product.brand;
+        brand = brand.toLowerCase();
+        if (brand.includes(x)) {
+          products.push(product);
+        }
+      }
+      this.productsHtml = products;
+    }
+  }
+
+  inputChangePriceSort() {
+    let sortByItems = this.productsHtml.slice(0);
+    if (this.priceSort) {
+      sortByItems.sort(function (a: any, b: any) {
+        return a.price - b.price;
+      });
+    } else {
+      sortByItems.sort(function (a: any, b: any) {
+        return a.id - b.id;
+      });
+    }
+    this.productsHtml = sortByItems;
   }
 }
