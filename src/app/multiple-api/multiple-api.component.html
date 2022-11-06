@@ -1,5 +1,9 @@
-<p *ngIf="!selectedProduct">name:</p>
-<p *ngIf="selectedProduct">{{selectedProduct.brand}}</p>
+<p
+  *ngIf="!selectedProduct"
+  class="selectedProd">name:</p>
+<p
+  *ngIf="selectedProduct"
+  class="selectedProd">{{selectedProduct.brand}}</p>
 brand:
 <input
   type="text"
@@ -14,12 +18,12 @@ price:
   [(ngModel)]="filteredPrice"
   (ngModelChange)="inputChangePrice()">
 <br>
-Sort by price
+sort by price
 <input
   type="checkbox"
   class="form-control"
   [(ngModel)]="priceSort"
-  (ngModelChange)="inputChangePriceSort()">
+  (ngModelChange)="inputChangeSortByPrice()">
 
 <br>
 <table>
@@ -33,7 +37,9 @@ Sort by price
     </tr>
     <ng-container *ngFor="let item of productsHtml">
       <ng-container>
-        <tr (click)="selectedProduct=item">
+        <tr
+          (click)="selectedProduct=item"
+          class="item_row">
 
           <td>{{item.brand}}</td>
           <td>{{item.price}}</td>

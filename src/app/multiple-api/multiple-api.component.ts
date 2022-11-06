@@ -35,7 +35,7 @@ export class MultipleAPIComponent implements OnInit {
     }
     this.productsHtml = products;
     this.loopOverPriceFilter();
-    this.inputChangePriceSort();
+    this.inputChangeSortByPrice();
   }
 
   inputChangePrice() {
@@ -47,7 +47,7 @@ export class MultipleAPIComponent implements OnInit {
     }
     this.productsHtml = products;
     this.loopOverBrandFilter();
-    this.inputChangePriceSort();
+    this.inputChangeSortByPrice();
   }
 
   loopOverPriceFilter() {
@@ -77,14 +77,14 @@ export class MultipleAPIComponent implements OnInit {
     }
   }
 
-  inputChangePriceSort() {
+  inputChangeSortByPrice() {
     let sortByItems = this.productsHtml.slice(0);
     if (this.priceSort) {
-      sortByItems.sort(function (a: any, b: any) {
+      sortByItems.sort((a: any, b: any) => {
         return a.price - b.price;
       });
     } else {
-      sortByItems.sort(function (a: any, b: any) {
+      sortByItems.sort((a: any, b: any) => {
         return a.id - b.id;
       });
     }
