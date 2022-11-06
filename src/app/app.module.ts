@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StylingComponent } from './styling/styling.component';
 import { MultipleAPIComponent } from './multiple-api/multiple-api.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { PricelistComponent } from './pricelist/pricelist.component';
+import { SearchinputComponent } from './searchinput/searchinput.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { FilterPipe } from './pipes/filter.pipe';
      StylingComponent,
      MultipleAPIComponent,
      FilterPipe,
+     PricelistComponent,
+     SearchinputComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],

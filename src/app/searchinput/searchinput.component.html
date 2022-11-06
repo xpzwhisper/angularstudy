@@ -1,0 +1,8 @@
+<input
+  type="text"
+  class="form-control"
+  placeholder="Search"
+  [(ngModel)]="filteredString"
+  (ngModelChange)="inputChange()">
+<app-multiple-api [ParentSearch]="filteredString"></app-multiple-api>
+<app-pricelist [ParentSearch]="filteredString"></app-pricelist>

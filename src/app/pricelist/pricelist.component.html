@@ -1,9 +1,10 @@
-<br>
+<p>pricelist works!</p>
 <table>
   <tbody>
     <tr>
 
-      <th>brand</th>
+      <th>price</th>
+      <th>stock</th>
 
     </tr>
     <ng-container *ngFor="let item of productsHtml">
@@ -12,8 +13,8 @@
           (click)="selectedProduct=item"
           class="item_row">
 
-          <td>{{item.brand}}</td>
-
+          <td>{{item.price}}</td>
+          <td>{{item.stock}}</td>
         </tr>
 
         <!-- <li (click)="selectedProduct=item">id = {{item.id}}, {{item.brand}}, price = {{item.price}}, stock = {{item.stock}}, total = {{item.stock +item.price}} -->
@@ -24,5 +25,3 @@
 
   </tbody>
 </table>
-
-<!-- https://dummyjson.com/products -->

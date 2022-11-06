@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-multiple-api',
@@ -14,6 +14,14 @@ export class MultipleAPIComponent implements OnInit {
   filteredString: any = '';
   filteredPrice: any;
   priceSort: any;
+  @Input() ParentSearch: any;
+
+  ngOnChanges(changes: any): void {
+    console.log('ˇtesting', changes, this.ParentSearch);
+    this.inputChangeBrand();
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+  }
 
   ngOnInit(): void {
     this.http.get('https://dummyjson.com/products').subscribe((data: any) => {
@@ -25,7 +33,7 @@ export class MultipleAPIComponent implements OnInit {
 
   inputChangeBrand() {
     let products = [];
-    let x = this.filteredString.toLowerCase();
+    let x = this.ParentSearch.toLowerCase();
     for (const product of this.realList) {
       let brand = product.brand;
       brand = brand.toLowerCase();
@@ -34,8 +42,8 @@ export class MultipleAPIComponent implements OnInit {
       }
     }
     this.productsHtml = products;
-    this.loopOverPriceFilter();
-    this.inputChangeSortByPrice();
+    //  this.loopOverPriceFilter();
+    //  this.inputChangeSortByPrice();
   }
 
   inputChangePrice() {
@@ -64,7 +72,7 @@ export class MultipleAPIComponent implements OnInit {
 
   loopOverBrandFilter() {
     let products = [];
-    let x = this.filteredString.toLowerCase();
+    let x = this.ParentSearch.toLowerCase();
     if (typeof this.filteredPrice !== 'undefined') {
       for (const product of this.productsHtml) {
         let brand = product.brand;
