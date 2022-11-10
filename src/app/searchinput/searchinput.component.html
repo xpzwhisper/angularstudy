@@ -1,8 +1,46 @@
+<!-- --------- searchbox ------------------------ -->
 <input
   type="text"
   class="form-control"
   placeholder="Search"
   [(ngModel)]="filteredString"
   (ngModelChange)="inputChange()">
-<app-multiple-api [ParentSearch]="filteredString"></app-multiple-api>
-<app-pricelist [ParentSearch]="filteredString"></app-pricelist>
+<br>
+<!-- -------------------------------------------- -->
+
+<!-- --------- checkboxes for sorting------------ -->
+sort by brand:
+<input
+  type="checkbox"
+  [(ngModel)]="sortByBrand"
+  (ngModelChange)="sorting()">
+<br>
+sort by price:
+<input
+  type="checkbox"
+  [(ngModel)]="sortByPrice"
+  (ngModelChange)="sorting()">
+<br>
+sort by stock qty:
+<input
+  type="checkbox"
+  [(ngModel)]="sortByStock"
+  (ngModelChange)="sorting()">
+<!-- -------------------------------------------- -->
+
+<!-- Error message------------------------------- -->
+<div
+  style="color:red"
+  *ngIf="sortingError">
+  More than one checkboxes picked
+</div>
+<!-- -------------------------------------------- -->
+
+<!-- --------- table ---------------------------- -->
+<div class="table">
+  <!-- display brand -->
+  <app-multiple-api [productsHtml]="productsHtml"></app-multiple-api>
+  <!-- price and stock -->
+  <app-pricelist [productsHtml]="productsHtml"></app-pricelist>
+  <!-- -------------------------------------------- -->
+</div>
