@@ -12,7 +12,6 @@ export class SearchinputComponent implements OnInit {
   searchResults: any;
   productsHtml: any;
   realList: any;
-  filteredPrice: any;
 
   sortByBrand: any;
   sortByPrice: any;
@@ -33,14 +32,19 @@ export class SearchinputComponent implements OnInit {
     for (const product of this.realList) {
       let brand = product.brand;
       brand = brand.toLowerCase();
-      if (brand.includes(x)) {
+      console.log(x);
+
+      if (brand.includes(x) && x !== '') {
         products.push(product);
       }
       if (this.filteredString <= product.price) {
         products.push(product);
       }
     }
+    console.log(this.productsHtml);
+
     this.productsHtml = products;
+    console.log(this.productsHtml);
     this.sorting();
   }
 

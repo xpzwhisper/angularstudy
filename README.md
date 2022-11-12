@@ -1,9 +1,15 @@
 This is Angular study with Hasan. 
 
+12/11/2022
+
+assigment 3 error fixed.
+
+-------------------------------------
 10/11/2022
 
 assigmnet three
 
+-------------------------------------
 
 04/11/2022
 1) brand and price filter work fine

@@ -29,6 +29,9 @@ sort by stock qty:
 <!-- -------------------------------------------- -->
 
 <!-- Error message------------------------------- -->
+<div *ngIf="!sortingError">
+  <br>
+</div>
 <div
   style="color:red"
   *ngIf="sortingError">
