@@ -6,6 +6,8 @@
   [(ngModel)]="filteredString"
   (ngModelChange)="inputChange()">
 <br>
+<p>Click Item of Search Result {{result}}</p>
+<p>Click Item of Search Result {{john.email}}</p>
 <!-- -------------------------------------------- -->
 
 <!-- --------- checkboxes for sorting------------ -->
@@ -42,7 +44,9 @@ sort by stock qty:
 <!-- --------- table ---------------------------- -->
 <div class="table">
   <!-- display brand -->
-  <app-multiple-api [productsHtml]="productsHtml"></app-multiple-api>
+  <app-multiple-api
+    [productsHtml]="productsHtml"
+    (clickedBrand)="changeResult($event)"></app-multiple-api>
   <!-- price and stock -->
   <app-pricelist [productsHtml]="productsHtml"></app-pricelist>
   <!-- -------------------------------------------- -->

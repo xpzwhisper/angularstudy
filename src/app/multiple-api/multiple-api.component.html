@@ -11,7 +11,7 @@
           (click)="selectedProduct=item"
           class="item_row">
 
-          <td>{{item.brand}}</td>
+          <td (click)="BrandClick(item.brand)">{{item.brand}}</td>
 
         </tr>
 

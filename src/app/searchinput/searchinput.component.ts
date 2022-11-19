@@ -1,29 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+interface user {
+  email: String;
+  password: String;
+}
+
+interface Apiresponse {
+  products: [];
+  skip: number;
+  limit: number;
+  total: number;
+}
+
 @Component({
   selector: 'app-searchinput',
   templateUrl: './searchinput.component.html',
   styleUrls: ['./searchinput.component.css'],
 })
 export class SearchinputComponent implements OnInit {
-  constructor(public http: HttpClient) {}
-  filteredString: any;
-  searchResults: any;
+  john: user = { email: 'hasss@yahoo.com', password: 'ˇpassword' };
+  constructor(public http: HttpClient) {
+    // this.john.email='something@go.com';
+    // this.john.password='password'
+  }
+  filteredString: String = '';
+  searchResults: [] = [];
   productsHtml: any;
   realList: any;
-
+  result = 0;
   sortByBrand: any;
   sortByPrice: any;
   sortByStock: any;
+  sampleJson = '';
 
   sortingError: boolean = false;
   ngOnInit(): void {
-    this.http.get('https://dummyjson.com/products').subscribe((data: any) => {
-      //console.log(data.products);
-      this.productsHtml = data.products; //all products
-      this.realList = data.products;
-    });
+    this.http
+      .get<Apiresponse>('https://dummyjson.com/products')
+      .subscribe((data: Apiresponse) => {
+        console.log(data.limit);
+        this.productsHtml = data.products; //all products
+        this.realList = data.products;
+      });
   }
 
   inputChange() {
@@ -82,5 +101,9 @@ export class SearchinputComponent implements OnInit {
       }
     }
     this.productsHtml = sortItems;
+  }
+
+  changeResult(result: any) {
+    this.result = result;
   }
 }
