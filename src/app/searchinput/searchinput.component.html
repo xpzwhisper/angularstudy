@@ -7,7 +7,9 @@
   (ngModelChange)="inputChange()">
 <br>
 <p>Click Item of Search Result {{result}}</p>
+<p>Price is {{result}}</p>
 <p>Click Item of Search Result {{john.email}}</p>
+<p>This is an experimental Output value from child {{clickedPriceVal}} </p>
 <!-- -------------------------------------------- -->
 
 <!-- --------- checkboxes for sorting------------ -->
@@ -48,6 +50,8 @@ sort by stock qty:
     [productsHtml]="productsHtml"
     (clickedBrand)="changeResult($event)"></app-multiple-api>
   <!-- price and stock -->
-  <app-pricelist [productsHtml]="productsHtml"></app-pricelist>
+  <app-pricelist
+    (clickedPrice)="clickedPrice($event)"
+    [productsHtml]="productsHtml"></app-pricelist>
   <!-- -------------------------------------------- -->
 </div>

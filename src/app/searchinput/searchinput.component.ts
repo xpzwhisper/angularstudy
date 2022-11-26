@@ -33,13 +33,13 @@ export class SearchinputComponent implements OnInit {
   sortByPrice: any;
   sortByStock: any;
   sampleJson = '';
+  clickedPriceVal: any = 0;
 
   sortingError: boolean = false;
   ngOnInit(): void {
     this.http
       .get<Apiresponse>('https://dummyjson.com/products')
       .subscribe((data: Apiresponse) => {
-        console.log(data.limit);
         this.productsHtml = data.products; //all products
         this.realList = data.products;
       });
@@ -105,5 +105,8 @@ export class SearchinputComponent implements OnInit {
 
   changeResult(result: any) {
     this.result = result;
+  }
+  clickedPrice(price: any) {
+    this.clickedPriceVal = price;
   }
 }

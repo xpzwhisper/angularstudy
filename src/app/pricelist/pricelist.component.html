@@ -10,7 +10,7 @@
     <ng-container *ngFor="let item of productsHtml">
       <ng-container>
         <tr
-          (click)="selectedProduct=item"
+          (click)="priceClick(item.price)"
           class="item_row">
 
           <td>{{item.price}}</td>

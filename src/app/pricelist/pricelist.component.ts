@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { EventEmitter, Output, Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-pricelist',
@@ -11,6 +11,11 @@ export class PricelistComponent implements OnInit {
 
   realList: any;
   @Input() productsHtml: any;
+  @Output() clickedPrice: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit(): void {}
+
+  priceClick(price: any) {
+    this.clickedPrice.emit(price);
+  }
 }

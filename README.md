@@ -1,5 +1,13 @@
 This is Angular study with Hasan.
 
+26/11/2022
+
+finished @Output experiment from child to parent
+
+- price to parent
+
+---
+
 19/11/2022
 
 child to parent & types in typescript
