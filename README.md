@@ -5,8 +5,6 @@ This is Angular study with Hasan.
 changed types from any to correct types
 usage of interface
 
-- price to parent
-
 ---
 
 26/11/2022
