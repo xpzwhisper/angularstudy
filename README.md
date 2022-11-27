@@ -1,5 +1,14 @@
 This is Angular study with Hasan.
 
+27/11/2022
+
+changed types from any to correct types
+usage of interface
+
+- price to parent
+
+---
+
 26/11/2022
 
 finished @Output experiment from child to parent

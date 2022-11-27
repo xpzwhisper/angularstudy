@@ -1,3 +1,4 @@
+import { product } from './../searchinput/searchinput.component';
 import { EventEmitter, Output, Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Component({
@@ -6,16 +7,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./pricelist.component.css'],
 })
 export class PricelistComponent implements OnInit {
+  @Input()
+  productsHtml: product[] = [];
   constructor(public http: HttpClient) {}
-  selectedProduct: any;
+  selectedProduct: object = {};
 
-  realList: any;
-  @Input() productsHtml: any;
-  @Output() clickedPrice: EventEmitter<any> = new EventEmitter<any>();
+  realList: [] = [];
+
+  @Output() clickedPrice: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit(): void {}
 
-  priceClick(price: any) {
+  priceClick(price: number) {
     this.clickedPrice.emit(price);
   }
 }

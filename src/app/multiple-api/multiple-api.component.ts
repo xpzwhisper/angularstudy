@@ -1,3 +1,4 @@
+import { product } from './../searchinput/searchinput.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
@@ -9,14 +10,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class MultipleAPIComponent implements OnInit {
   constructor(public http: HttpClient) {}
 
-  selectedProduct: any;
+  selectedProduct: object = {};
 
-  @Input() productsHtml: any;
-  @Output() clickedBrand: EventEmitter<any> = new EventEmitter<any>();
+  @Input() productsHtml: product[] = [];
+  @Output() clickedBrand: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {}
 
-  BrandClick(brand: any) {
+  BrandClick(brand: string) {
     console.log(brand);
     this.clickedBrand.emit(brand);
   }
